@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icrm
+  labels:
+    type: app
+spec:
+  replicas: 2
+  template:
+    metadata:
+       name: nginx-with-volume
+       labels:
+         app: prod
+    spec:
+       containers:
+         - name: nginx-container
+           image: nginx:latest
+
+  selector:
+    matchLabels:
+      app: prod
